@@ -15,30 +15,28 @@ namespace Main
         String n;
 
 
-        public Modal(int ID, String command, String name)
+        public Modal(int ID, String command, String name, String type)
         {
             this.X = ID;
             this.cmd = command;
             this.n = name;
+            this.t = type;
 
         }
 
         public void Load()
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            try
-            {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader(path + "/Modality/" + @"\WriteLines.txt"))
-                {
-                    // Read the stream to a string, and write the string to the console.
-                    String line = sr.ReadToEnd();
-                    MessageBox.Show(line);                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-            }
+            public string Load(String filePath)
+        {
+            string line = File.ReadLines(filePath).Skip(0).Take(1).First();
+            string line2 = File.ReadLines(filePath).Skip(1).Take(1).First();
+            string line3 = File.ReadLines(filePath).Skip(2).Take(1).First();
+            string line4 = File.ReadLines(filePath).Skip(3).Take(1).First();
+            int idline = Int32.Parse(line);
+            Modal m = new Modal(idline, line2, line3, line4);
+            return null;
+
+        }
 
         }
         public void Save()
