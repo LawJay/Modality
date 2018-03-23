@@ -25,9 +25,9 @@ namespace Main
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            
-            //load modal files
-
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            path += "/Modality/";
+            listFilesInDirectory(path);
 
             //insert modals into array list
 
@@ -40,6 +40,16 @@ namespace Main
 
 
 
+        }
+         static void listFilesInDirectory(string workingDirectory)
+        {
+            Modal test = new Modal(1, "test", "test", "test");
+            string[] filePaths = Directory.GetFiles(workingDirectory);
+            foreach(string filePath in filePaths)
+            {
+                Console.WriteLine(filePath);
+                test.load(filePath);
+            }
         }
 
        
