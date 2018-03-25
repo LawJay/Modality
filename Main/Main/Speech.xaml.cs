@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
+using System.Windows.Forms;
 
 namespace Main
 {
@@ -60,13 +61,18 @@ namespace Main
 
         private void Recog_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            MessageBox.Show("Speech Recognised :" + e.Result.Text.ToString());
+            if (e.Result.Text.Equals("test"))
+            {
+                SendKeys.SendWait("{a}");
+            }
+            System.Windows.MessageBox.Show("Speech Recognised :" + e.Result.Text.ToString());
+            
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             int i = 1;
-            Modal x = new Modal(i, cmdText.Text, cmdText.Text);
+            Modal x = new Modal(i, cmdText.Text, cmdText.Text,"Speech");
             x.Save();
         }
     }
