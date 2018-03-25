@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 
 namespace Main
@@ -29,28 +30,37 @@ namespace Main
             path += "/Modality/";
             listFilesInDirectory(path);
 
+
+
+            //load modal files
+           
+
             //insert modals into array list
 
             //load arraylist into System memory
 
 
-            
+
 
 
 
 
 
         }
-         static void listFilesInDirectory(string workingDirectory)
+
+        static void listFilesInDirectory(string workingDirectory)
         {
             Modal test = new Modal(1, "test", "test", "test");
+
             string[] filePaths = Directory.GetFiles(workingDirectory);
             foreach(string filePath in filePaths)
             {
                 Console.WriteLine(filePath);
-                test.load(filePath);
+                test.Load(filePath);
             }
         }
+
+
 
        
 
@@ -75,8 +85,7 @@ namespace Main
             MessageBox.Show("Key Clicked");
             Key k = new Key();
             k.Show();
-            Modal m = new Modal(5, "test", "tst");
-            m.Load();
+           
         }
 
         private void keyBtn_MouseEnter(object sender, MouseEventArgs e)
