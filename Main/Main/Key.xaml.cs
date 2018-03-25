@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
@@ -26,7 +26,13 @@ namespace Main
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            System.Windows.MessageBox.Show("Key Pressed : " + e.Key);
+            String key = e.Key.ToString();
+            System.Windows.MessageBox.Show("Key down : " + key);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
